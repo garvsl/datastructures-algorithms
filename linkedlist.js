@@ -104,6 +104,27 @@ function LinkedList() {
         }
       }
     },
+    insertAt: function (value, index) {
+      let count = 1;
+      let current = head;
+      if (index == 1) {
+        return;
+      } else if (index == 2) {
+        let newValue = Node(value);
+        newValue.next = current.next;
+        current.next = newValue;
+      } else {
+        while (current.next != null) {
+          current = current.next;
+          count++;
+          if (count + 1 == index) {
+            let newValue = Node(value);
+            newValue.next = current.next;
+            current.next = newValue;
+          }
+        }
+      }
+    },
     toString: function () {
       let current = head;
       let text = {
@@ -117,9 +138,23 @@ function LinkedList() {
 
       console.log((text.print += "null"));
     },
-    // inserAt: function (value, index) {
-    //   let newValue = Node(value);
-    //   newValue.next = current;
-    // },
+    removeAt: function (index) {
+      let count = 1;
+      let current = head;
+      if (index == 1) {
+      } else if (index == 2) {
+        let temp = current.next.next;
+        current.next = temp;
+      } else {
+        while (current.next != null) {
+          current = current.next;
+          count++;
+          if (count + 1 == index) {
+            let temp = current.next.next;
+            current.next = temp;
+          }
+        }
+      }
+    },
   };
 }
